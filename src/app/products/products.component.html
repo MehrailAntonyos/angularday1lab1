@@ -1,3 +1,57 @@
+<!-- form -->
+<form [formGroup]="addProductForm" (ngSubmit)="addProduct()" class="container my-3">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Id</label>
+        <input type="email" class="form-control" aria-describedby="emailHelp"
+            formControlName="id">
+   
+        <div *ngIf="addProductForm.get('id')?.touched && addProductForm.get('id')?.invalid">
+            <span class="text-danger"
+                *ngIf="addProductForm.get('id')?.errors?.['required']">must
+                enter a product id</span>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Product Name</label>
+        <input type="text" class="form-control" formControlName="name">
+        <div *ngIf="addProductForm.get('name')?.touched && addProductForm.get('name')?.invalid">
+            
+            <span class="text-danger"
+                *ngIf="addProductForm.get('name')?.errors?.['required']">must enter a name
+                with at
+                least 4 character</span>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleConfirmPassword1" class="form-label">Product Quantity</label>
+        <input type="text" class="form-control" formControlName="quantity">
+        <div
+            *ngIf="addProductForm.get('quantity')?.touched && addProductForm.get('quantity')?.invalid">
+            <span class="text-danger"
+                *ngIf="addProductForm.get('quantity')?.errors?.['required']">must
+                enter quantity</span><br>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputID" class="form-label">Product Price</label>
+        <input type="text" class="form-control" formControlName="price">
+        <div
+            *ngIf="addProductForm.get('price')?.touched && addProductForm.get('price')?.invalid">
+            <span class="text-danger"
+                *ngIf="addProductForm.get('price')?.errors?.['required']">must
+                enter quantity</span><br>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputID" class="form-label">Product Image</label>
+        <input type="text" class="form-control" formControlName="img">
+        <span class="text-danger"
+            *ngIf="addProductForm.get('img')?.errors?.['required']">must enter a
+            photo URL with 5 character</span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
 <div class="row p-5 d-flex bg-primary justify-content-center">
     <div class="col-sm-2" *ngFor="let product of ProductList">
         <div class="card d-flex justify-content-center">
